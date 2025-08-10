@@ -2,8 +2,8 @@
 import Chat from "@/app/components/chat/Chat";
 import Detail from "@/app/components/detail/Detail";
 import List from "@/app/components/list/List";
-import Login from "@/app/components/Login/Login";
-import SignUp from "@/app/components/Login/SignUp";
+import Login from "@/app/signin/page";
+import SignUp from "@/app/signup/page";
 import { Progress } from "@/components/ui/progress";
 import { auth } from "@/lib/firebase";
 import { useUserStore } from "@/lib/userStore";
