@@ -8,6 +8,18 @@ import {
   Download,
   UserX,
 } from "lucide-react";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
+import { auth } from "@/lib/firebase";
 const Detail = () => {
   return (
     <div className="flex-1 flex flex-col h-full">
@@ -27,11 +39,11 @@ const Detail = () => {
           </span>
         </div>{" "}
         <div className="flex">
-          <div className="flex gap-x-2 relative cursor-pointer bg-red-500/20 transition-colors duration-200 ease-in-out hover:bg-red-500/50 rounded-md p-2 px-15 m-2 ">
+          <div className="flex gap-x-2 relative cursor-pointer bg-zinc-500/20 transition-colors duration-200 ease-in-out hover:bg-red-500/50 rounded-md p-2 px-15 m-2 ">
             <UserX />
             <button className="">Block User</button>
           </div>
-          <div className="flex gap-x-2 relative cursor-pointer bg-yellow-500/20 transition-colors duration-200 ease-in-out hover:bg-yellow-500/50 rounded-md p-2 px-10 m-2 ">
+          <div className="flex gap-x-2 relative cursor-pointer bg-zinc-500/20 transition-colors duration-200 ease-in-out hover:bg-yellow-500/50 rounded-md p-2 px-10 m-2 ">
             <BellOff />
             <button className="">Mute</button>
           </div>
@@ -130,8 +142,29 @@ const Detail = () => {
 
       <div className="flex justify-center">
         {" "}
-        <button className="relative cursor-pointer bg-sky-500/20 transition-colors duration-200 ease-in-out hover:bg-sky-500/50 rounded-md p-2 px-8  m-2">
-          Log Out
+        <button className="relativecursor-pointer shadow-md bg-zinc-500/20 transition-colors duration-200 ease-in-out hover:bg-zinc-500/80 rounded-md p-2 px-8 m-2">
+          <AlertDialog>
+            <AlertDialogTrigger className="">Logout</AlertDialogTrigger>
+            <AlertDialogContent className="bg-zinc-700/60 backdrop-blur-lg">
+              <AlertDialogHeader>
+                <AlertDialogTitle>Logout</AlertDialogTitle>
+                <AlertDialogDescription className="text-zinc-300">
+                  Are you sure you want to logout?
+                </AlertDialogDescription>
+              </AlertDialogHeader>
+              <AlertDialogFooter>
+                <AlertDialogCancel className="text-zinc-700 bg-zinc-200/80 hover:bg-white">
+                  Cancel
+                </AlertDialogCancel>
+                <div onClick={() => auth.signOut()}>
+                  {" "}
+                  <AlertDialogAction className="text-zinc-700 bg-zinc-200/80 hover:bg-white">
+                    Continue
+                  </AlertDialogAction>
+                </div>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialog>
         </button>
       </div>
     </div>
