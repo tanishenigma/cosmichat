@@ -142,9 +142,12 @@ const Detail = () => {
 
       <div className="flex justify-center">
         {" "}
-        <button className="relativecursor-pointer shadow-md bg-zinc-500/20 transition-colors duration-200 ease-in-out hover:bg-zinc-500/80 rounded-md p-2 px-8 m-2">
+        <div className="flex justify-center">
           <AlertDialog>
-            <AlertDialogTrigger className="">Logout</AlertDialogTrigger>
+            <AlertDialogTrigger className="relative cursor-pointer shadow-md bg-zinc-500/20 transition-colors duration-200 ease-in-out hover:bg-zinc-500/80 rounded-md p-2 px-8 m-2">
+              Logout
+            </AlertDialogTrigger>
+
             <AlertDialogContent className="bg-zinc-700/60 backdrop-blur-lg">
               <AlertDialogHeader>
                 <AlertDialogTitle>Logout</AlertDialogTitle>
@@ -156,16 +159,15 @@ const Detail = () => {
                 <AlertDialogCancel className="text-zinc-700 bg-zinc-200/80 hover:bg-white">
                   Cancel
                 </AlertDialogCancel>
-                <div onClick={() => auth.signOut()}>
-                  {" "}
-                  <AlertDialogAction className="text-zinc-700 bg-zinc-200/80 hover:bg-white">
-                    Continue
-                  </AlertDialogAction>
-                </div>
+                <AlertDialogAction
+                  onClick={() => auth.signOut()}
+                  className="text-zinc-700 bg-zinc-200/80 hover:bg-white">
+                  Continue
+                </AlertDialogAction>
               </AlertDialogFooter>
             </AlertDialogContent>
           </AlertDialog>
-        </button>
+        </div>
       </div>
     </div>
   );

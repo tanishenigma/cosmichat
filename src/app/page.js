@@ -35,16 +35,12 @@ export default function Home() {
     const unSub = onAuthStateChanged(auth, (user) => {
       if (user) {
         fetchUserInfo(user.uid);
-      } else {
-        fetchUserInfo(null); // or however your store handles logout
       }
     });
     return () => {
       unSub();
     };
   }, [fetchUserInfo]);
-
-  console.log(currentUser);
 
   if (isLoading)
     return (
